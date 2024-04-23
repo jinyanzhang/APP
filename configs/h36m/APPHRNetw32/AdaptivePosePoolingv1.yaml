@@ -1,0 +1,81 @@
+#Training
+# learning_rate: 0.0002 # this value should be 0.0005
+learning_rate: 0.002
+# batch_size: 16
+batch_size: 4
+weight_decay: 0.01
+lr_decay: 0.99
+epochs: 120
+train_2d: False
+
+# whether to use accumulate gradients
+accumulate_grads: True
+accumulate_iters: 4
+
+# Model
+model_name: AdaptivePosePoolingv1
+
+encoder:
+  enc_n_layers: 16
+  enc_dim_in: 3
+  enc_dim_feat: 128
+  enc_dim_rep: 512
+  enc_dim_out: 3
+  enc_mlp_ratio: 4
+  enc_act_layer: gelu
+  enc_attn_drop: 0.0
+  enc_drop: 0.0
+  enc_drop_path: 0.0
+  enc_use_layer_scale: True
+  enc_layer_scale_init_value: 0.00001
+  enc_use_adaptive_fusion: True
+  enc_num_heads: 8
+  enc_qkv_bias: False
+  enc_qkv_scale: null
+  enc_hierarchical: False
+  enc_use_temporal_similarity: True # Only useful when use_tcn = False
+  enc_neighbour_num: 2  # Only useful when use_temporal_similarity = True
+  enc_temporal_connection_len: 1 # Only useful when use_tcn = False, use_temporal_similarity = False
+  enc_use_tcn: False
+  enc_graph_only: False
+  # enc_pretrained: checkpoint/motionagformer-b-h36m_hrnet.pth.tr
+  enc_pretrained: checkpoint/motionagformer-b-h36m_hrnet.pth.tr
+decoder:
+  dec_n_layers: 6
+  dec_n_levels: 4
+  dec_n_heads: 8
+  dec_n_points: 4
+  dec_drop_path: 0.2
+  dec_dim_img: 128
+  dec_drop: .0
+  dec_mlp_ratio: 4.
+  dec_act_layer: gelu
+  backbone_feats: [32, 64, 128, 256]
+  backbone_type: hrnet
+  backbone_name: hrnet_w32_384_288
+  backbone_pretrained: data/pretrained/coco/pose_hrnet_w32_384x288.pth
+n_frames: 243 # 243 if add_velocity is False else 242
+
+# Data
+data_root: data/motion3d/
+data_root_2d: data/motion2d/
+image_root: /home/xxxxxx/Human3.6M/images_384_288
+subset_list: [ MultipleDetectedImages_243_27 ]
+# only valid for MultipleDetectedImages
+detector_type: hrnet
+dt_file: h36m_sh_cpn_hrnet_yolo_misc.pkl
+num_joints: 17
+root_rel: True # Normalizing joints relative to the root joint
+add_velocity: False
+
+# Loss
+lambda_3d_velocity: 20.0
+lambda_scale: 0.5
+lambda_lv: 0.0
+lambda_lg: 0.0
+lambda_a: 0.0
+lambda_av: 0.0
+
+# Augmentation
+use_proj_as_2d: False
+flip: True

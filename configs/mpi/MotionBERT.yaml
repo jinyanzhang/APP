@@ -1,0 +1,41 @@
+#Training
+# learning_rate: 0.0005
+learning_rate: 0.0002
+# batch_size: 32
+batch_size: 16
+weight_decay: 0.01
+lr_decay: 0.99
+epochs: 120
+
+# whether to use accumulate gradients
+accumulate_grads: False
+accumulate_iters: 2
+
+model_name: MotionBERT
+
+# Model
+maxlen: 81
+dim_feat: 512
+mlp_ratio: 2
+depth: 5
+dim_rep: 512
+num_heads: 8
+att_fuse: True
+n_frames: 81
+
+# Data
+data_root: data1/motion3d/
+subset_list: [ 3DHPImages_81_9 ]
+dt_file: 3dhp_gt.pkl
+stride: 9
+num_joints: 17
+
+# Loss
+lambda_3d_velocity: 20.0
+lambda_scale: 0.5
+lambda_lv: 0.0
+lambda_lg: 0.0
+lambda_a: 0.0
+lambda_av: 0.0
+
+flip: True

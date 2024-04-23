@@ -1,0 +1,16 @@
+.idea
+.vscode
+
+*.pkl
+*.pth
+*.pth.tr
+*.pth.tar
+*.tar.xz
+*.pyc
+*.mp4
+
+wandb
+checkpoint/*.pth.tr
+logs
+data1
+data-home

@@ -1,0 +1,57 @@
+# learning_rate: 0.0002 # this value should be 0.0005
+learning_rate: 0.0005
+# batch_size: 16
+batch_size: 8
+weight_decay: 0.01
+lr_decay: 0.99
+epochs: 60
+train_2d: False
+
+# whether to use accumulate gradients
+accumulate_grads: True
+accumulate_iters: 2
+
+# Model
+model_name: AdaptivePosePoolingv2
+
+model:
+  n_layers: 6
+  n_heads: 8
+  kernel_size: 3
+  alpha: 0.9
+  drop_path: 0.2
+  dim_img: 128
+  dim_pose: 128
+  drop: .0
+  mlp_ratio: 4.
+  act_layer: gelu
+  backbone_features: [32, 64, 128, 256]
+  # backbone_features: [48, 96, 192, 384]
+  ablation: [False, False, True, False]
+n_frames: 243 # 243 if add_velocity is False else 242
+
+# Data
+data_root: data1/motion3d/
+data_root_2d: data1/motion2d/
+images_root: data-home/Human3.6M/images_384_288
+poses_root: data1/motionagformer-b-h36m-hrnet
+feature_root: data1
+subset_list: [ MultipleDetectedImages_243_27 ]
+# only valid for MultipleDetectedImages
+detector_type: hrnet
+dt_file: h36m_sh_cpn_hrnet_yolo_misc.pkl
+num_joints: 17
+root_rel: True # Normalizing joints relative to the root joint
+add_velocity: False
+
+# Loss
+lambda_3d_velocity: 20.0
+lambda_scale: 0.5
+lambda_lv: 0.0
+lambda_lg: 0.0
+lambda_a: 0.0
+lambda_av: 0.0
+
+# Augmentation
+use_proj_as_2d: False
+flip: True

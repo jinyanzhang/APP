@@ -1,0 +1,44 @@
+#Training
+learning_rate: 0.0005
+batch_size: 16
+weight_decay: 0.01
+lr_decay: 0.99
+epochs: 60
+train_2d: False
+
+# whether to use accumulate gradients
+accumulate_grads: False
+accumulate_iters: 1
+
+# Model
+model_name: HoT
+
+maxlen: 243
+dim_feat: 256
+mlp_ratio: 4
+depth: 5
+dim_rep: 512
+num_heads: 8
+n_frames: 243 # 243 if add_velocity is False else 242
+
+# Data
+data_root: data1/motion3d/
+data_root_2d: data1/motion2d/
+subset_list: [ MultipleDetectedImages_243_27 ]
+dt_file: h36m_sh_cpn_hrnet_yolo_misc.pkl
+detector_type: sh
+num_joints: 17
+root_rel: True # Normalizing joints relative to the root joint
+add_velocity: False
+
+# Loss
+lambda_3d_velocity: 20.0
+lambda_scale: 0.5
+lambda_lv: 0.0
+lambda_lg: 0.0
+lambda_a: 0.0
+lambda_av: 0.0
+
+# Augmentation
+use_proj_as_2d: False
+flip: True
