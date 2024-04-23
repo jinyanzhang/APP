@@ -1,5 +1,3 @@
-"""Adapted from MotionBERT paper code (https://github.com/Walter0807/MotionBERT/blob/main/tools/convert_h36m.py)"""
-
 import os
 import pickle
 import sys

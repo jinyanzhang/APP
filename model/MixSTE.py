@@ -1,4 +1,3 @@
-## Our PoseFormer model was revised from https://github.com/rwightman/pytorch-image-models/blob/master/timm/models/vision_transformer.py
 from functools import partial
 from einops import rearrange
 import numpy as np

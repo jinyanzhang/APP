@@ -1,5 +1,3 @@
-"""Adopted from https://github.com/Uason-Chen/CTR-GCN/ with minor modifications"""
-
 import numpy as np
 import torch
 from torch import nn

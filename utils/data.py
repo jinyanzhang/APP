@@ -11,7 +11,6 @@ right_joints=[4, 5, 6, 11, 12, 13]
 class Augmenter2D(object):
     """
         Make 2D augmentations on the fly. PyTorch batch-processing GPU version.
-        Adapted from https://github.com/Walter0807/MotionBERT/blob/main/lib/data/augmentation.py#L10
     """
     def __init__(self, args):
         self.d2c_params = read_pkl(args.d2c_params_path)
@@ -84,7 +83,6 @@ class Augmenter2D(object):
 
 
 def resample(ori_len, target_len, replay=False, randomness=True):
-    """Adapted from https://github.com/Walter0807/MotionBERT/blob/main/lib/utils/utils_data.py#L68"""
     if replay:
         if ori_len > target_len:
             st = np.random.randint(ori_len - target_len)
@@ -109,7 +107,6 @@ def resample(ori_len, target_len, replay=False, randomness=True):
 
 
 def split_clips(vid_list, n_frames, data_stride):
-    """Adapted from https://github.com/Walter0807/MotionBERT/blob/main/lib/utils/utils_data.py#L91"""
     result = []
     n_clips = 0
     st = 0

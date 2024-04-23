@@ -1,4 +1,3 @@
-# Adapted from MotionBERT (https://github.com/Walter0807/MotionBERT/blob/main/lib/data/datareader_h36m.py)
 from __future__ import absolute_import
 from __future__ import division
 from __future__ import print_function

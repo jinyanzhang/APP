@@ -1,8 +1,3 @@
-'''
-Hourglass network inserted in the pre-activated Resnet
-Use lr=0.01 for current version
-(c) YANG, Wei
-'''
 import os
 import torch
 import torch.nn as nn

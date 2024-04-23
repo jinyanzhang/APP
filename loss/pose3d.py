@@ -1,5 +1,3 @@
-"""Adapted from https://github.com/Walter0807/MotionBERT/blob/main/lib/model/loss.py"""
-
 import torch
 import torch.nn as nn
 import numpy as np
